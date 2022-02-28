@@ -1,0 +1,41 @@
+digraph ControlDependencies {
+  compound=true;
+subgraph cluster_f_inc {
+label="inc"
+subgraph cluster_bb_0x5622d498edb0 {
+  style=dotted;
+ instr0x5622d498f0e0 [shape=rectangle label="  %2 = alloca i32*, align 8"]
+ instr0x5622d4994990 [shape=rectangle label="  store i32* %0, i32** %2, align 8"]
+ instr0x5622d4986cf0 [shape=rectangle label="  call void @llvm.dbg.declare(metadata i32** %2, metadata !12, metadata !DIExpression()), !dbg !13"]
+ instr0x5622d498f150 [shape=rectangle label="  %3 = load i32*, i32** %2, align 8, !dbg !14"]
+ instr0x5622d498f1f0 [shape=rectangle label="  %4 = load i32, i32* %3, align 4, !dbg !15"]
+ instr0x5622d4994b10 [shape=rectangle label="  %5 = add nsw i32 %4, 1, !dbg !16"]
+ instr0x5622d498f260 [shape=rectangle label="  ret i32 %5, !dbg !17"]
+ instr0x5622d498f0e0 -> instr0x5622d4994990 [style=invis]
+ instr0x5622d4994990 -> instr0x5622d4986cf0 [style=invis]
+ instr0x5622d4986cf0 -> instr0x5622d498f150 [style=invis]
+ instr0x5622d498f150 -> instr0x5622d498f1f0 [style=invis]
+ instr0x5622d498f1f0 -> instr0x5622d4994b10 [style=invis]
+ instr0x5622d4994b10 -> instr0x5622d498f260 [style=invis]
+}
+}
+subgraph cluster_f_main {
+label="main"
+subgraph cluster_bb_0x5622d498afe0 {
+  style=dotted;
+ instr0x5622d498f2d0 [shape=rectangle label="  %1 = alloca i32, align 4"]
+ instr0x5622d4995b00 [shape=rectangle label="  %2 = alloca i32, align 4"]
+ instr0x5622d4995b90 [shape=rectangle label="  store i32 0, i32* %1, align 4"]
+ instr0x5622d493a8f0 [shape=rectangle label="  call void @llvm.dbg.declare(metadata i32* %2, metadata !21, metadata !DIExpression()), !dbg !22"]
+ instr0x5622d4995c80 [shape=rectangle label="  store i32 42, i32* %2, align 4, !dbg !12"]
+ instr0x5622d4995d10 [shape=rectangle label="  %3 = call i32 @inc(i32* %2), !dbg !13"]
+ instr0x5622d4995dc0 [shape=rectangle label="  ret i32 %3, !dbg !14"]
+ instr0x5622d498f2d0 -> instr0x5622d4995b00 [style=invis]
+ instr0x5622d4995b00 -> instr0x5622d4995b90 [style=invis]
+ instr0x5622d4995b90 -> instr0x5622d493a8f0 [style=invis]
+ instr0x5622d493a8f0 -> instr0x5622d4995c80 [style=invis]
+ instr0x5622d4995c80 -> instr0x5622d4995d10 [style=invis]
+ instr0x5622d4995d10 -> instr0x5622d4995dc0 [style=invis]
+}
+}
+}

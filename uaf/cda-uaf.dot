@@ -1,0 +1,77 @@
+digraph ControlDependencies {
+  compound=true;
+subgraph cluster_f_main {
+label="main"
+subgraph cluster_bb_0x55b83bcf7c10 {
+  style=dotted;
+ instr0x55b83bcf81c0 [shape=rectangle label="  %3 = alloca i32, align 4"]
+ instr0x55b83bcf8120 [shape=rectangle label="  %4 = alloca i32, align 4"]
+ instr0x55b83bcf80b0 [shape=rectangle label="  %5 = alloca i8**, align 8"]
+ instr0x55b83bcf8010 [shape=rectangle label="  %6 = alloca i32, align 4"]
+ instr0x55b83bcff840 [shape=rectangle label="  store i32 0, i32* %3, align 4"]
+ instr0x55b83bcff8d0 [shape=rectangle label="  store i32 %0, i32* %4, align 4"]
+ instr0x55b83bceecf0 [shape=rectangle label="  call void @llvm.dbg.declare(metadata i32* %4, metadata !14, metadata !DIExpression()), !dbg !15"]
+ instr0x55b83bcff990 [shape=rectangle label="  store i8** %1, i8*** %5, align 8"]
+ instr0x55b83bca28f0 [shape=rectangle label="  call void @llvm.dbg.declare(metadata i8*** %5, metadata !16, metadata !DIExpression()), !dbg !17"]
+ instr0x55b83bc97340 [shape=rectangle label="  call void @llvm.dbg.declare(metadata i32* %6, metadata !18, metadata !DIExpression()), !dbg !19"]
+ instr0x55b83bcffb40 [shape=rectangle label="  store i32 0, i32* %6, align 4, !dbg !19"]
+ instr0x55b83bcffbb0 [shape=rectangle label="  %7 = load i32, i32* %4, align 4, !dbg !20"]
+ instr0x55b83bcffc70 [shape=rectangle label="  %8 = icmp slt i32 %7, 2, !dbg !22"]
+ instr0x55b83bcffd50 [shape=rectangle label="  br i1 %8, label %9, label %10, !dbg !23"]
+ instr0x55b83bcf81c0 -> instr0x55b83bcf8120 [style=invis]
+ instr0x55b83bcf8120 -> instr0x55b83bcf80b0 [style=invis]
+ instr0x55b83bcf80b0 -> instr0x55b83bcf8010 [style=invis]
+ instr0x55b83bcf8010 -> instr0x55b83bcff840 [style=invis]
+ instr0x55b83bcff840 -> instr0x55b83bcff8d0 [style=invis]
+ instr0x55b83bcff8d0 -> instr0x55b83bceecf0 [style=invis]
+ instr0x55b83bceecf0 -> instr0x55b83bcff990 [style=invis]
+ instr0x55b83bcff990 -> instr0x55b83bca28f0 [style=invis]
+ instr0x55b83bca28f0 -> instr0x55b83bc97340 [style=invis]
+ instr0x55b83bc97340 -> instr0x55b83bcffb40 [style=invis]
+ instr0x55b83bcffb40 -> instr0x55b83bcffbb0 [style=invis]
+ instr0x55b83bcffbb0 -> instr0x55b83bcffc70 [style=invis]
+ instr0x55b83bcffc70 -> instr0x55b83bcffd50 [style=invis]
+}
+subgraph cluster_bb_0x55b83bcfe100 {
+  style=dotted;
+ instr0x55b83bcffe10 [shape=rectangle label="  store i32 1, i32* %3, align 4, !dbg !24"]
+ instr0x55b83bcffeb0 [shape=rectangle label="  br label %19, !dbg !24"]
+ instr0x55b83bcffe10 -> instr0x55b83bcffeb0 [style=invis]
+}
+subgraph cluster_bb_0x55b83bcfe150 {
+  style=dotted;
+ instr0x55b83bcfff20 [shape=rectangle label="  %11 = load i8**, i8*** %5, align 8, !dbg !26"]
+ instr0x55b83bcfffe0 [shape=rectangle label="  %12 = getelementptr inbounds i8*, i8** %11, i64 1, !dbg !26"]
+ instr0x55b83bd00060 [shape=rectangle label="  %13 = load i8*, i8** %12, align 8, !dbg !26"]
+ instr0x55b83bd000f0 [shape=rectangle label="  %14 = call i32 @atoi(i8* %13) #4, !dbg !28"]
+ instr0x55b83bd001c0 [shape=rectangle label="  store i32 %14, i32* %6, align 4, !dbg !29"]
+ instr0x55b83bd00260 [shape=rectangle label="  br label %15"]
+ instr0x55b83bcfff20 -> instr0x55b83bcfffe0 [style=invis]
+ instr0x55b83bcfffe0 -> instr0x55b83bd00060 [style=invis]
+ instr0x55b83bd00060 -> instr0x55b83bd000f0 [style=invis]
+ instr0x55b83bd000f0 -> instr0x55b83bd001c0 [style=invis]
+ instr0x55b83bd001c0 -> instr0x55b83bd00260 [style=invis]
+}
+subgraph cluster_bb_0x55b83bcfe1a0 {
+  style=dotted;
+ instr0x55b83bd002d0 [shape=rectangle label="  %16 = load %struct._IO_FILE*, %struct._IO_FILE** @stdout, align 8, !dbg !30"]
+ instr0x55b83bd00370 [shape=rectangle label="  %17 = load i32, i32* %6, align 4, !dbg !31"]
+ instr0x55b83bd00470 [shape=rectangle label="  %18 = call i32 (%struct._IO_FILE*, i8*, ...) @fprintf(%struct._IO_FILE* %16, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i64 0, i64 0), i32 %17), !dbg !32"]
+ instr0x55b83bd00540 [shape=rectangle label="  store i32 0, i32* %3, align 4, !dbg !33"]
+ instr0x55b83bd005e0 [shape=rectangle label="  br label %19, !dbg !33"]
+ instr0x55b83bd002d0 -> instr0x55b83bd00370 [style=invis]
+ instr0x55b83bd00370 -> instr0x55b83bd00470 [style=invis]
+ instr0x55b83bd00470 -> instr0x55b83bd00540 [style=invis]
+ instr0x55b83bd00540 -> instr0x55b83bd005e0 [style=invis]
+}
+subgraph cluster_bb_0x55b83bcfe1f0 {
+  style=dotted;
+ instr0x55b83bd00650 [shape=rectangle label="  %20 = load i32, i32* %3, align 4, !dbg !34"]
+ instr0x55b83bd006f0 [shape=rectangle label="  ret i32 %20, !dbg !34"]
+ instr0x55b83bd00650 -> instr0x55b83bd006f0 [style=invis]
+}
+}
+instr0x55b83bcffd50 -> instr0x55b83bcffe10[color=blue minlen=2 penwidth=2 ltail=cluster_bb_0x55b83bcf7c10 lhead=cluster_bb_0x55b83bcfe100]
+instr0x55b83bcffd50 -> instr0x55b83bcfff20[color=blue minlen=2 penwidth=2 ltail=cluster_bb_0x55b83bcf7c10 lhead=cluster_bb_0x55b83bcfe150]
+instr0x55b83bcffd50 -> instr0x55b83bd002d0[color=blue minlen=2 penwidth=2 ltail=cluster_bb_0x55b83bcf7c10 lhead=cluster_bb_0x55b83bcfe1a0]
+}

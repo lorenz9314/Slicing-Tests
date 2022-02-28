@@ -1,0 +1,318 @@
+digraph DependenceGraph {
+	graph [bb="0,0,2729,925.37",
+		compound=true,
+		label="Graph 0x55b9ad8d82b0 has 7 nodes\n
+	dd edges color: cyan4
+	use edges color: black, dashed
+	cd edges color: blue
+	cfg edges color: \
+gray",
+		lheight=1.26,
+		lp="1364.5,49.5",
+		lwidth=3.65
+	];
+	node [label="\N"];
+	subgraph cluster_0x55b9ad8eaf50 {
+		graph [bb="8,107,1492,917.37",
+			fillcolor=gray95,
+			label="Subgraph inc [0x55b9ad8eaf50]\nhas 7 nodes
+",
+			lheight=0.42,
+			lp="750,898.37",
+			lwidth=3.19,
+			style="filled, rounded"
+		];
+		subgraph cluster_bb_0x55b9ad8eb860 {
+			graph [bb="16,194,516,808.37",
+				fillcolor=white,
+				label="inc::
+label  [0x55b9ad8eb860]		\ndfs order: 3",
+				lheight=0.62,
+				lp="266,781.87",
+				lwidth=3.47,
+				style=filled
+			];
+			NODE0x55b9ad8ebcd0	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  store i32* %0, i32** %2, align 8",
+				pos="381,548.87",
+				shape=rect,
+				style=filled,
+				width=3.5139];
+			NODE0x55b9ad8ec1c0	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  %3 = load i32*, i32** %2, align 8, !dbg !14",
+				labelURL="pargs.c:3:13",
+				pos="341,452",
+				shape=rect,
+				style=filled,
+				width=4.625];
+			NODE0x55b9ad8ebcd0 -> NODE0x55b9ad8ec1c0	[color=cyan4,
+				pos="e,348.69,471.24 373.29,529.58 367.42,515.67 359.25,496.29 352.6,480.52",
+				rank=max];
+			NODE0x55b9ad8eba70	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  %2 = alloca i32*, align 8",
+				pos="407,728.37",
+				shape=rect,
+				style=filled,
+				width=2.8056];
+			NODE0x55b9ad8eba70 -> NODE0x55b9ad8ebcd0	[color=black,
+				pos="e,383.17,568.12 403.46,709.2 401.99,701.42 400.33,692.21 399,683.87 393.21,647.44 387.74,605.25 384.39,578.09",
+				rank=max,
+				style=dashed];
+			NODE0x55b9ad8eba70 -> NODE0x55b9ad8ec1c0	[color=black,
+				pos="e,300.01,471.05 338.84,709.32 297.27,697.63 250.98,683.09 245,674.87 205.04,619.92 214,582.46 245,522 254.98,502.54 273.29,487.32 \
+291.26,476.19",
+				rank=max,
+				style=dashed];
+			NODE0x55b9ad8ebf30	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  call void @llvm.dbg.declare(meta",
+				labelURL="pargs.c:1:14",
+				pos="156,728.37",
+				shape=rect,
+				style=filled,
+				width=3.6667];
+			NODE0x55b9ad8ec420	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  %4 = load i32, i32* %3, align 4, !dbg !15",
+				labelURL="pargs.c:3:12",
+				pos="346,371",
+				shape=rect,
+				style=filled,
+				width=4.4444];
+			NODE0x55b9ad8ec1c0 -> NODE0x55b9ad8ec420	[color=black,
+				pos="e,344.85,390.22 342.16,432.68 342.77,423.11 343.52,411.18 344.2,400.44",
+				rank=max,
+				style=dashed];
+			NODE0x55b9ad8ec680	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  %5 = add nsw i32 %4, 1, !dbg !16",
+				labelURL="pargs.c:3:14",
+				pos="346,296",
+				shape=rect,
+				style=filled,
+				width=3.7639];
+			NODE0x55b9ad8ec420 -> NODE0x55b9ad8ec680	[color=black,
+				pos="e,346,315.09 346,351.96 346,343.88 346,334.18 346,325.18",
+				rank=max,
+				style=dashed];
+			NODE0x55b9ad8ec8e0	[fillcolor=white,
+				height=0.52778,
+				label="inc::
+  ret i32 %5, !dbg !17",
+				labelURL="pargs.c:3:5",
+				pos="346,221",
+				shape=rect,
+				style=filled,
+				width=2.375];
+			NODE0x55b9ad8ec680 -> NODE0x55b9ad8ec8e0	[color=black,
+				pos="e,346,240.09 346,276.96 346,268.88 346,259.18 346,250.18",
+				rank=max,
+				style=dashed];
+		}
+		NODE0x55b9ad8eb380	[fillcolor=white,
+			height=0.5,
+			label="[f] IN ARG i32* %0",
+			pos="858,728.37",
+			style=filled,
+			width=2.7261];
+		NODE0x55b9ad8eb380 -> NODE0x55b9ad8ebcd0	[color=black,
+			pos="e,393.69,568.16 804.38,713.24 787.4,709.13 768.49,704.93 751,701.87 645.26,683.39 608.17,720.48 511,674.87 463.54,652.59 422.54,\
+605.97 399.86,576.38",
+			rank=max,
+			style=dashed];
+		NODE0x55b9ad8eb580	[fillcolor=white,
+			height=0.5,
+			label="[f] OUT ARG i32* %0",
+			pos="634,728.37",
+			style=filled,
+			width=2.997];
+		NODE0x55b9ad8ed870	[fillcolor=white,
+			height=0.74639,
+			label="OUT ARG main::
+  %2 = alloca i32, align 4",
+			pos="752,548.87",
+			style=filled,
+			width=3.8302];
+		NODE0x55b9ad8eb580 -> NODE0x55b9ad8ed870	[color=cyan4,
+			pos="e,734.87,575.64 645.31,710.35 664.54,681.43 703.94,622.16 729.11,584.31",
+			rank=max];
+		NODE0x55b9ad8ecb90	[height=0.5,
+			pos="346,133",
+			width=3.3219];
+		NODE0x55b9ad8ec8e0 -> NODE0x55b9ad8ecb90	[color=gray,
+			label=255,
+			lhead=cluster_bb_0x55b9ad8ecd90,
+			lp="344,176.5",
+			ltail=cluster_bb_0x55b9ad8eb860,
+			penwidth=2,
+			pos="e,336.32,151.29 332.38,194 329.7,186.06 328.21,177.24 330,169 330.59,166.28 331.42,163.52 332.38,160.8"];
+		NODE0x55b9ad8ec8e0 -> NODE0x55b9ad8ecb90	[color=blue,
+			pos="e,353.14,151.15 353.92,201.71 357.18,192.04 359.82,179.95 358,169 357.55,166.3 356.92,163.53 356.18,160.79"];
+		NODE0x55b9ad8eb0f0	[fillcolor=white,
+			height=0.5,
+			label="GLOB FUNC inc",
+			pos="858,853.37",
+			style=filled,
+			width=2.4012];
+		NODE0x55b9ad8eb0f0 -> NODE0x55b9ad8eb380	[color=blue,
+			pos="e,858,746.72 858,835.27 858,815 858,780.97 858,756.96"];
+		NODE0x55b9ad8eb0f0 -> NODE0x55b9ad8eb580	[color=blue,
+			pos="e,656.01,746.23 816.45,837.56 796.26,829.79 771.89,819.57 751,808.37 720.16,791.84 687.33,769.18 664.32,752.36"];
+		NODE0x55b9ad8eb0f0 -> NODE0x55b9ad8eba70	[color=blue,
+			pos="e,424.86,747.53 777.04,846.89 690.22,840.17 558.57,827.28 512,808.37 481.59,796.02 452.19,772.59 432.27,754.44"];
+		NODE0x55b9ad8eacb0	[fillcolor=white,
+			height=0.73611,
+			label="main::
+  %3 = call i32 @inc(i32* %2), !dbg !13\nsubgraphs: 1",
+			labelURL="pargs.c:10:12",
+			pos="1123,728.37",
+			shape=rect,
+			style=filled,
+			width=4.1389];
+		NODE0x55b9ad8eb0f0 -> NODE0x55b9ad8eacb0	[color=black,
+			pos="e,1066.2,755.04 890.34,836.56 909.59,828.47 934.24,818.27 956,808.37 989.52,793.12 1026.4,774.8 1057,759.64",
+			rank=max,
+			style=dashed];
+		NODE0x55b9ad8eacb0 -> NODE0x55b9ad8ed870	[color=blue,
+			pos="e,802.26,573.92 1069.4,701.75 1001,668.99 882.8,612.45 811.57,578.37"];
+		NODE0x55b9ad8eacb0 -> NODE0x55b9ad8eb0f0	[color=blue,
+			pos="e,902.86,837.96 1081.7,755.04 1052,770.97 1011,791.55 974,808.37 954.2,817.38 932.01,826.63 912.31,834.32"];
+		NODE0x55b9ad8e9e90	[fillcolor=white,
+			height=0.5,
+			label="GLOB FUNC main",
+			pos="1387,853.37",
+			style=filled,
+			width=2.6539];
+		NODE0x55b9ad8ea0d0	[fillcolor=white,
+			height=0.52778,
+			label="main::
+  %1 = alloca i32, align 4",
+			pos="1387,728.37",
+			shape=rect,
+			style=filled,
+			width=2.7083];
+		NODE0x55b9ad8e9e90 -> NODE0x55b9ad8ea0d0	[color=blue,
+			pos="e,1387,747.53 1387,835.27 1387,815.23 1387,781.74 1387,757.78"];
+	}
+	subgraph cluster_0x55b9ad8d82b0 {
+		graph [bb="1500,417,2721,674.87",
+			fillcolor=gray95,
+			label="Subgraph main [0x55b9ad8d82b0]\nhas 7 nodes
+",
+			lheight=0.42,
+			lp="2110.5,655.87",
+			lwidth=3.47,
+			style="filled, rounded"
+		];
+		subgraph cluster_bb_0x55b9ad8ddba0 {
+			graph [bb="1508,425,2427,628.87",
+				fillcolor=white,
+				label="main::
+label  [0x55b9ad8ddba0]		\ndfs order: 1",
+				lheight=0.62,
+				lp="1967.5,602.37",
+				lwidth=3.47,
+				style=filled
+			];
+			NODE0x55b9ad8ea330	[fillcolor=white,
+				height=0.52778,
+				label="main::
+  %2 = alloca i32, align 4",
+				pos="1613,548.87",
+				shape=rect,
+				style=filled,
+				width=2.7083];
+			NODE0x55b9ad8eaa50	[fillcolor=white,
+				height=0.52778,
+				label="main::
+  store i32 42, i32* %2, align 4, !dbg !12",
+				labelURL="pargs.c:8:9",
+				pos="1669,452",
+				shape=rect,
+				style=filled,
+				width=4.2361];
+			NODE0x55b9ad8ea330 -> NODE0x55b9ad8eaa50	[color=black,
+				pos="e,1657.1,471.19 1622.8,529.68 1629.3,517.97 1637.9,502.47 1646,489 1647.8,485.98 1649.7,482.85 1651.7,479.74",
+				rank=max,
+				style=dashed];
+			NODE0x55b9ad8ea590	[fillcolor=white,
+				height=0.52778,
+				label="main::
+  store i32 0, i32* %1, align 4",
+				pos="2306,548.87",
+				shape=rect,
+				style=filled,
+				width=3.1389];
+			NODE0x55b9ad8ea7f0	[fillcolor=white,
+				height=0.52778,
+				label="main::
+  call void @llvm.dbg.declare(met",
+				labelURL="pargs.c:8:9",
+				pos="1857,548.87",
+				shape=rect,
+				style=filled,
+				width=3.5556];
+			NODE0x55b9ad8edd00	[fillcolor=white,
+				height=0.52778,
+				label="main::
+  ret i32 %3, !dbg !14",
+				labelURL="pargs.c:10:5",
+				pos="2089,548.87",
+				shape=rect,
+				style=filled,
+				width=2.375];
+		}
+		NODE0x55b9ad8edfb0	[height=0.5,
+			pos="2553,452",
+			width=3.2858];
+		NODE0x55b9ad8edd00 -> NODE0x55b9ad8edfb0	[color=gray,
+			label=255,
+			lhead=cluster_bb_0x55b9ad8ee1b0,
+			lp="2349,496.5",
+			ltail=cluster_bb_0x55b9ad8ddba0,
+			penwidth=2,
+			pos="e,2475.2,465.66 2427,473.96 2440.5,471.58 2453.4,469.36 2465.3,467.33"];
+		NODE0x55b9ad8edd00 -> NODE0x55b9ad8edfb0	[color=blue,
+			pos="e,2472.7,465.26 2135.5,529.84 2171.7,516.54 2223.3,499.09 2270,489 2340.4,473.79 2359.6,480.26 2431,471 2441.2,469.68 2451.9,468.21 \
+2462.5,466.71"];
+		NODE0x55b9ad8ed670	[fillcolor=white,
+			height=0.74639,
+			label="IN ARG main::
+  %2 = alloca i32, align 4",
+			pos="2575,548.87",
+			style=filled,
+			width=3.8302];
+	}
+	NODE0x55b9ad8eacb0 -> NODE0x55b9ad8edd00	[color=black,
+		pos="e,2081.5,568.04 1272.2,702.8 1275.2,702.47 1278.1,702.16 1281,701.87 1487.2,681.1 1539.9,690.45 1747,682.87 1760.7,682.37 1981.8,\
+681.17 1994,674.87 2034.4,653.99 2062.5,607.19 2077.2,577.15",
+		rank=max,
+		style=dashed];
+	NODE0x55b9ad8eacb0 -> NODE0x55b9ad8ed670	[color=blue,
+		pos="e,2555.2,575.57 1272.2,702.73 1275.2,702.43 1278.1,702.14 1281,701.87 1408.3,690.16 2311.8,720.99 2431,674.87 2479.3,656.17 2522.4,\
+613.61 2548.6,583.36"];
+	NODE0x55b9ad8ea0d0 -> NODE0x55b9ad8ea590	[color=black,
+		pos="e,2294.8,567.97 1484.6,724.84 1683.4,719.13 2122,703.44 2184,674.87 2230.4,653.51 2268.5,606.17 2289.2,576.27",
+		rank=max,
+		style=dashed];
+	NODE0x55b9ad8ea330 -> NODE0x55b9ad8eacb0	[color=black,
+		pos="e,1272.3,703.14 1602,568.07 1583.8,596.32 1544.7,650.02 1496,674.87 1413.1,717.18 1378.6,690.13 1282.4,701.8",
+		rank=max,
+		style=dashed];
+	NODE0x55b9ad8eaa50 -> NODE0x55b9ad8ec420	[color=cyan4,
+		pos="e,506.25,381.57 1516.3,441.88 1267.5,427.02 776.39,397.7 516.54,382.18",
+		rank=max];
+	NODE0x55b9ad8ed670 -> NODE0x55b9ad8eb380	[color=cyan4,
+		pos="e,908.75,712.91 2555.2,575.61 2530.1,605.91 2483.7,654.64 2431,674.87 2355,704.07 1045.8,691.62 965,701.87 949.77,703.8 933.55,707.04 \
+918.47,710.56",
+		rank=max];
+}

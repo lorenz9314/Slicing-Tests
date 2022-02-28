@@ -1,0 +1,127 @@
+digraph "Data Dependencies Graph" {
+  compound=true;
+
+subgraph cluster_subg_0x56211953da80 {
+  compound=true;
+
+  style=filled;
+  fillcolor=white; color=blue;
+  label=<<table cellborder="0"><tr><td colspan="4">subgraph inc (0x56211953da80)</td></tr>
+<tr><td colspan="4">-- summary -- </td></tr>
+<tr><td colspan="4">==  inputs ==</td></tr><tr><td align="left" colspan="4">main::%2 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>RWNodeType::INARG [12]</td></tr>
+<tr><td colspan="4">==  outputs ==</td></tr></table>>;
+	NODE0x562119541510 [label=<<table border="0"><tr><td>(12)</td> <td><font color="#af0000">RWNodeType::INARG [12]</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+subgraph cluster_bb_0x56211953dc50 {
+    style=filled;
+    fillcolor="#eeeeee";
+    color="black";
+label=<<table border="0">
+<tr><td colspan="4">bblock 1 (0x56211953dc50)</td></tr><tr><td colspan="4">==  defines ==</td></tr><tr><td align="left" colspan="4">main::%2 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>RWNodeType::INARG [12]</td></tr>
+<tr><td align="left" colspan="4">inc::%2 = alloca i32*,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 7]</td><td>@</td><td>inc::store i32* %0, i32** %2,</td></tr>
+<tr><td colspan="4">==  kills ==</td></tr><tr><td align="left" colspan="4">main::%2 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>RWNodeType::INARG [12]</td></tr>
+<tr><td align="left" colspan="4">inc::%2 = alloca i32*,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 7]</td><td>@</td><td>inc::%2 = alloca i32*,</td></tr>
+<tr><td>&nbsp;&nbsp;</td><td>[0 - 7]</td><td>@</td><td>inc::store i32* %0, i32** %2,</td></tr>
+</table>>
+labelloc=b
+	NODE0x56211953dcb0 [label=<<table border="0"><tr><td>(1)</td> <td><font color="#af0000">inc::%2 = alloca i32*,</font></td></tr>
+<tr><td></td><td>size: 8</td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953df70 [label=<<table border="0"><tr><td>(2)</td> <td><font color="#af0000">inc::store i32* %0, i32** %2,</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953e150 [label=<<table border="0"><tr><td>(3)</td> <td><font color="#af0000">inc::%3 = load i32*, i32** %2,</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953e330 [label=<<table border="0"><tr><td>(4)</td> <td><font color="#af0000">inc::%4 = load i32, i32* %3,</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953e760 [label=<<table border="0"><tr><td>(6)</td> <td><font color="#af0000">inc::ret i32 %5, !dbg !17</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+}
+}
+subgraph cluster_subg_0x56211953db40 {
+  compound=true;
+
+  style=filled;
+  fillcolor=white; color=blue;
+  label=<<table cellborder="0"><tr><td colspan="4">subgraph main (0x56211953db40)</td></tr>
+<tr><td colspan="4">-- summary -- </td></tr>
+<tr><td colspan="4">==  inputs ==</td></tr><tr><td colspan="4">==  outputs ==</td></tr></table>>;
+subgraph cluster_bb_0x56211953e960 {
+    style=filled;
+    fillcolor="#eeeeee";
+    color="black";
+label=<<table border="0">
+<tr><td colspan="4">bblock 2 (0x56211953e960)</td></tr><tr><td colspan="4">==  defines ==</td></tr><tr><td align="left" colspan="4">main::%2 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::store i32 42, i32* %2,</td></tr>
+<tr><td align="left" colspan="4">main::%1 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::store i32 0, i32* %1,</td></tr>
+<tr><td colspan="4">==  kills ==</td></tr><tr><td align="left" colspan="4">main::%2 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::%2 = alloca i32,</td></tr>
+<tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::store i32 42, i32* %2,</td></tr>
+<tr><td align="left" colspan="4">main::%1 = alloca i32,</td></tr><tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::%1 = alloca i32,</td></tr>
+<tr><td>&nbsp;&nbsp;</td><td>[0 - 3]</td><td>@</td><td>main::store i32 0, i32* %1,</td></tr>
+</table>>
+labelloc=b
+	NODE0x56211953ea50 [label=<<table border="0"><tr><td>(7)</td> <td><font color="#af0000">main::%1 = alloca i32,</font></td></tr>
+<tr><td></td><td>size: 4</td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953e4d0 [label=<<table border="0"><tr><td>(5)</td> <td><font color="#af0000">main::%2 = alloca i32,</font></td></tr>
+<tr><td></td><td>size: 4</td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953ecd0 [label=<<table border="0"><tr><td>(8)</td> <td><font color="#af0000">main::store i32 0, i32* %1,</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953ef10 [label=<<table border="0"><tr><td>(9)</td> <td><font color="#af0000">main::store i32 42, i32* %2,</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+}
+subgraph cluster_bb_0x562119540980 {
+    style=filled;
+    fillcolor="#eeeeee";
+    color="black";
+label=<<table border="0">
+<tr><td colspan="4">bblock 4 (0x562119540980)</td></tr><tr><td colspan="4">==  defines ==</td></tr><tr><td colspan="4">==  kills ==</td></tr></table>>
+labelloc=b
+	NODE0x5621195419f0 [label=<<table border="0"><tr><td>(13)</td> <td><font color="#af0000">RWNodeType::CALLIN [13]</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+	NODE0x56211953f170 [label=<<table border="0"><tr><td>(10)</td> <td><font color="#af0000">main::%3 = call i32 @inc(i32* %2), !dbg !13</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+}
+subgraph cluster_bb_0x562119540920 {
+    style=filled;
+    fillcolor="#eeeeee";
+    color="black";
+label=<<table border="0">
+<tr><td colspan="4">bblock 3 (0x562119540920)</td></tr></table>>
+labelloc=b
+	NODE0x56211953f3e0 [label=<<table border="0"><tr><td>(11)</td> <td><font color="#af0000">main::ret i32 %3, !dbg !14</font></td></tr>
+</table>>
+ style=filled fillcolor=white shape=box]
+}
+}
+	NODE0x5621195419f0->NODE0x562119541510 [style=dotted constraint=false]
+	NODE0x56211953dcb0->NODE0x56211953df70 [constraint=true]
+	NODE0x56211953df70->NODE0x56211953e150 [constraint=true]
+	NODE0x56211953e150->NODE0x56211953e330 [constraint=true]
+	NODE0x56211953e330->NODE0x56211953e760 [constraint=true]
+
+	NODE0x56211953df70->NODE0x56211953e150 [style=dotted constraint=false color=blue]
+	NODE0x56211953ef10->NODE0x56211953e330 [style=dotted constraint=false color=blue]
+	NODE0x56211953ea50->NODE0x56211953e4d0 [constraint=true]
+	NODE0x56211953e4d0->NODE0x56211953ecd0 [constraint=true]
+	NODE0x56211953ecd0->NODE0x56211953ef10 [constraint=true]
+
+	NODE0x56211953ef10 -> NODE0x5621195419f0 [penwidth=2 constraint=true lhead="cluster_bb_0x56211953e960" ltail="cluster_bb_0x562119540980"]
+	NODE0x5621195419f0->NODE0x56211953f170 [constraint=true]
+
+	NODE0x56211953f170 -> NODE0x56211953f3e0 [penwidth=2 constraint=true lhead="cluster_bb_0x562119540980" ltail="cluster_bb_0x562119540920"]
+
+	NODE0x56211953ef10->NODE0x5621195419f0 [style=dotted constraint=false]
+	NODE0x56211953f170->NODE0x56211953dcb0 [penwidth=4 color=blue ltail=cluster_subg_0x56211953da80]
+}
