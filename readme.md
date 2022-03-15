@@ -133,3 +133,171 @@ Backward-Slice für die Variable `x` in Zeile `20` erkennbar:
 
 ## Joern
 
+Der Joern Container wird ebenfalls mit Hilfe des `run.sh`-Skripts im
+entsprechenden Ordner ausgeführt. Nachdem auch dieser Container gebaut
+wurde, sollte auch hier wieder ein Shell starten, welche sich initial im
+Ordner `/joern/` befindet. Hier ist das Tool vorzufinden, welches durch
+den Aufruf von `./joern` ausgeführt wird und einen REPL startet:
+
+```
+root@8da2d83eaf7d:/joern# ./joern
+Compiling /joern/(console)
+creating workspace directory: /joern/workspace
+
+     ??? ??????? ??????????????? ????   ???
+     ?????????????????????????????????  ???
+     ??????   ?????????  ?????????????? ???
+??   ??????   ?????????  ??????????????????
+????????????????????????????  ?????? ??????
+ ??????  ??????? ???????????  ??????  ?????
+      
+Type `help` or `browse(help)` to begin
+joern>
+```
+
+Um den CPG zu generieren, muss zunächst ein neues Projekt angelegt
+werden sowie der dazugehörige Quellcode übergeben werden. Hierzu wird
+die Funktion `importCode()` aufgerufen, wie unten aufgeführt ist:
+
+```
+joern> importCode(inputPath="./examples/propagate",
+  projectName="propagate") 
+Using generator for language: NEWC: CCpgGenerator
+Creating project `propagate` for code at `./examples/propagate`
+2022-03-15 13:58:11.580 WARN IncludeAutoDiscovery$: GCC is not
+  installed. Discovery of system include paths will not be available.
+moving cpg.bin.zip to cpg.bin because it is already a database file
+Creating working copy of CPG to be safe
+Loading base CPG from: /joern/workspace/propagate/cpg.bin.tmp
+Code successfully imported. You can now query it using `cpg`.
+For an overview of all imported code, type `workspace`.
+Adding default overlays to base CPG
+The graph has been modified. You may want to use the `save` command to
+  persist changes to disk.  All changes will also be saved collectively
+  on exit
+res0: Cpg = io.shiftleft.codepropertygraph.generated.Cpg@7a14d8a4
+```
+
+Nach dem Aufruf, kann auf den CPG über das `cpg`-Objekt zugegriffen
+werden und der Graph traversiert werden. Damit auch interprozedurale
+Abhängigkeiten ermittelt werden, muss zunächst noch die Funktion
+`run.ossdataflow` aufgerufen werden.
+
+```
+joern> run.ossdataflow 
+The graph has been modified. You may want to use the 'save' command to
+  persist changes to disk.  All changes will also be saved collectively
+  on exit
+res1: Cpg = io.shiftleft.codepropertygraph.generated.Cpg@7a14d8a4
+```
+
+Um den Graphen traversieren zu können, lassen sich verschiedene
+Einstiegspunkte finden. Mittels der Funktion `cpg.calls()` können
+besipielsweise Funktionsaufrufe ermittelt werden. Optional lässt sich
+hier der Name der Funktion übergeben, deren Aufruf wir suchen oder auch
+reguläre Ausdrücke verwenden. Ausgehend von dem Beispiel `propagate`,
+können wir nun die Funktionsdefinition von `a()`
+suchen und uns deren Parameter auflisten lassen. Hierzu definieren wir
+die Funktion mit dem Namen `source`:
+
+```
+joern> def source = cpg.method("a").parameter
+defined function source
+```
+
+Wir können die Funktion nun Aufrufen und uns eine Liste der Argumente
+mit der Komposition `source.l` ausgeben lassen:
+
+```
+joern> source.l
+res6: List[MethodParameterIn] = List(
+  MethodParameterIn(
+    id -> 32L,
+    code -> "int w",
+    columnNumber -> Some(value = 6),
+    dynamicTypeHintFullName -> ArraySeq(),
+    evaluationStrategy -> "BY_VALUE",
+    isVariadic -> false,
+    lineNumber -> Some(value = 13),
+    name -> "w",
+    order -> 1,
+    typeFullName -> "int"
+  )
+)
+
+```
+
+Wir erkennen das erste und einzige  Argument eine Variable ist, die an
+den Namen `w` gebunden ist. Joern ist vorallem auf Taint-Analysen
+ausgelegt. Wir könnten uns in diesem Zusammenhang z.B. dafür
+interessieren, ob der Parameter `w` von `a()` in ein Argument von `c()`
+fließt. Dies kann durch eine weitere Funktion, `sink()` abgebildet
+werden, welche im Folgenden definiert wird:
+
+```
+joern> def sink = cpg.call("c").argument 
+defined function sink
+```
+
+Um nun alle Pfade im Datenfluss sichtbar zu machen, auf denen eines der
+Argumente von `a()` die von `c()` erreicht, rufen wir nun folgende
+Komposition auf:
+
+```
+joern> sink.reachableByFlows(source).l
+res5: List[Path] = List(
+  Path(
+    elements = List(
+      MethodParameterIn(
+        id -> 32L,
+        code -> "int w",
+        columnNumber -> Some(value = 6),
+        dynamicTypeHintFullName -> ArraySeq(),
+        evaluationStrategy -> "BY_VALUE",
+        isVariadic -> false,
+        lineNumber -> Some(value = 13),
+        name -> "w",
+        order -> 1,
+        typeFullName -> "int"
+      ),
+      Identifier(
+        id -> 38L,
+        argumentIndex -> 1,
+        argumentName -> None,
+        code -> "w",
+        columnNumber -> Some(value = 14),
+        dynamicTypeHintFullName -> ArraySeq(),
+        lineNumber -> Some(value = 14),
+        name -> "w",
+        order -> 1,
+        typeFullName -> "int"
+      ),
+      MethodParameterIn(
+        id -> 20L,
+        code -> "int v",
+        columnNumber -> Some(value = 6),
+        dynamicTypeHintFullName -> ArraySeq(),
+        evaluationStrategy -> "BY_VALUE",
+        isVariadic -> false,
+        lineNumber -> Some(value = 7),
+        name -> "v",
+        order -> 1,
+        typeFullName -> "int"
+      ),
+      Identifier(
+        id -> 26L,
+        argumentIndex -> 1,
+        argumentName -> None,
+        code -> "v",
+        columnNumber -> Some(value = 14),
+        dynamicTypeHintFullName -> ArraySeq(),
+        lineNumber -> Some(value = 8),
+        name -> "v",
+        order -> 1,
+        typeFullName -> "int"
+      )
+    )
+  )
+)
+
+```

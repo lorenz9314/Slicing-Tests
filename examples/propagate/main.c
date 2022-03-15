@@ -1,17 +1,17 @@
-int c(int x) {
-    int y = x;
+int c(int u) {
+    int y = u;
 
     return y;
 }
 
-int b(int x) {
-    int y = c(x);
+int b(int v) {
+    int y = c(v);
 
     return y;
 }
 
-int a(int x) {
-    int y = b(x);
+int a(int w) {
+    int y = b(w);
 
     return y;
 }
