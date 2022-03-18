@@ -10,19 +10,19 @@ auffindbar.
 
 
 Nach dem Bauen und Linken des Python-Interpreters habe ich zunächst
-nach geeigneten Slicing-Kriterien um das Tool zu testen. Ich wähle an
-dieser Stelle zunächst die Datei _Python/getopt.c_, da diese etwas
-übersichtlicher ist und dort die Variable `option` in der Funktion
-`＿PyOS＿GetOpt＿`. Die Variable wird in Zeile 63 deklariert und in
-Zeile 98 das erste Mal definiert sowie benutzt. Um sicherzustellen, dass
-die Variable an dem betrachteten Punkt im Programm definitiv definiert
-ist verwende ich Zeile 110 als Kriterium.
+nach geeigneten Slicing-Kriterien gesucht um das Tool zu testen. Ich
+wähle an dieser Stelle zunächst die Datei _Python/getopt.c_, da diese
+etwas übersichtlicher ist und dort die Variable `option` in der
+Funktion `＿PyOS＿GetOpt＿`. Die Variable wird in Zeile 63 deklariert
+und in Zeile 98 das erste Mal definiert sowie benutzt. Um
+sicherzustellen, dass die Variable an dem betrachteten Punkt im
+Programm definitiv definiert ist verwende ich Zeile 110 als Kriterium.
 
-Ich prüfe nun anhand des Bitcodes, den ich zuvor in eine lesbare Form
-übersetzt habe, ob meine Angaben auffindbar sein sollten indem ich die
-Debug-Informationen betrachte und finde den Eintrag für
-_"Python/getopt.c"_. Ferner ist dort ebenfalls der Eintrag für die
-Deklaration der Variable `option`
+Ich prüfe nun anhand des Bitcodes, den ich zuvor mit `llvm-dis` in
+eine lesbare Form übersetzt habe, ob meine Angaben auffindbar sein
+sollten indem ich die Debug-Informationen betrachte und finde den
+Eintrag für _"Python/getopt.c"_. Ferner ist dort ebenfalls der Eintrag
+für die Deklaration der Variable `option` zu finden:
 
 ```
 !158879 = !DIFile(filename: "Python/getopt.c", directory: "/home/lorenz1/Downloads/cpython")
@@ -89,7 +89,7 @@ Analyse zeigten keine Veränderungen.
 
 ```
 lorenz1@stw10:~/mlsast/misc/slicing/examples/cpython$ llvm-slicer -sc "Python/hashtable.c#_Py_hashtable_steal#300#&key" python.bc
-SC: Matched 'Python/hashtable.c#_Py_hashtable_steal#300#&key' to: 
+SC: Matched 'Python/hashtable.c#_Py_hashtable_steal#205#&key' to: 
     %109 = load i64, i64* %108, align 8, !dbg !308364, !tbaa !308245
 [llvm-slicer] cutoff 89 diverging blocks and 13 completely removed
 WARNING: Non-0 memset:   tail call void @llvm.memset.p0i8.i64(i8* nonnull align 8 %54, i8 -1, i64 %56, i1 false), !dbg !308319
