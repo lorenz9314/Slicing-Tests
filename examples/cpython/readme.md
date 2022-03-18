@@ -45,7 +45,7 @@ int _PyOS_GetOpt(Py_ssize_t argc, wchar_t * const *argv, int *longindex)
 
 Nun, rufe ich den `llvm-slicer` wie folgt auf:
 
-``
+```
 llvm-slicer -sc "Python/getopt.c#_PyOS_GetOpt#110#&option" python.bc
 No reachable slicing criteria: 'Python/getopt.c#_PyOS_GetOpt#72#&option' ''
 [llvm-slicer] saving sliced module to: python.sliced
