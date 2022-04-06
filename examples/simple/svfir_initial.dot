@@ -1,0 +1,23 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x556b6f7edee0 [shape=record,shape=box,label="{[main] RetPN ID: 4294967290 unique return node for function main}"];
+	Node0x556b6f7ed890 [shape=record,shape=box3d,label="{[main] FIObjVar ID: 4 (base object)\n main \{ in line: 1 file: main.c \}}"];
+	Node0x556b6f7ed890 -> Node0x556b6f7ec690[color=green];
+	Node0x556b6f7edbf0 [shape=record,shape=box3d,label="{[main] FIObjVar ID: 5 (base object)\n   %1 = alloca i32*, align 8 \{ ln: 3 fl: main.c \}}"];
+	Node0x556b6f7edbf0 -> Node0x556b6f7ecee0[color=green];
+	Node0x556b6f7ed230 [shape=record,shape=box,label="{[main] ValVar ID: 4294967285\n   %3 = load i32*, i32** %1, align 8, !dbg !18 \{ ln: 6  cl: 3  fl: main.c \}}"];
+	Node0x556b6f7ed100 [shape=record,shape=box,label="{[main] ValVar ID: 4294967288\n   %2 = alloca i32*, align 8 \{ ln: 4 fl: main.c \}}"];
+	Node0x556b6f7ecee0 [shape=record,shape=box,label="{[main] ValVar ID: 4294967289\n   %1 = alloca i32*, align 8 \{ ln: 3 fl: main.c \}}"];
+	Node0x556b6f7ecee0 -> Node0x556b6f7ed490[color=red];
+	Node0x556b6f7ecee0 -> Node0x556b6f7ed230[color=red];
+	Node0x556b6f7ed490 [shape=record,shape=box,label="{[main] ValVar ID: 4294967282\n   %4 = load i32*, i32** %1, align 8, !dbg !20 \{ ln: 7  cl: 6  fl: main.c \}}"];
+	Node0x556b6f7ed490 -> Node0x556b6f7ed100[color=blue];
+	Node0x556b6f7dc7c0 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x556b6f7ebe60 [shape=record,shape=diamond,label="{DummyValVar ID: 0}"];
+	Node0x556b6f7ebe60 -> Node0x556b6f7dc7c0[color=black];
+	Node0x556b6f7edda0 [shape=record,shape=box3d,label="{[main] FIObjVar ID: 6 (base object)\n   %2 = alloca i32*, align 8 \{ ln: 4 fl: main.c \}}"];
+	Node0x556b6f7edda0 -> Node0x556b6f7ed100[color=green];
+	Node0x556b6f7ec690 [shape=record,shape=box,label="{[main] ValVar ID: 4294967291\n main \{ in line: 1 file: main.c \}}"];
+	Node0x556b6f7de7e0 [shape=record,shape=tab,label="{DummyObjVar ID: 3}"];
+}
