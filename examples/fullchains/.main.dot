@@ -1,0 +1,19 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x7088320 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%2:\l  %3 = alloca i32, align 4\l  %4 = alloca i32, align 4\l  %5 = alloca i8**, align 8\l  %6 = alloca i32*, align 8\l  %7 = alloca i32*, align 8\l  %8 = alloca i32*, align 8\l  %9 = alloca i32, align 4\l  %10 = alloca i32, align 4\l  store i32 0, i32* %3, align 4\l  store i32 %0, i32* %4, align 4\l  store i8** %1, i8*** %5, align 8\l  %11 = load i32*, i32** %6, align 8\l  store i32 42, i32* %11, align 4\l  %12 = load i32*, i32** %7, align 8\l  store i32 0, i32* %12, align 4\l  store i32 0, i32* %10, align 4\l  store i32 5, i32* %9, align 4\l  %13 = load i32, i32* %4, align 4\l  store i32 %13, i32* %10, align 4\l  %14 = load i32, i32* %10, align 4\l  %15 = load i32, i32* %9, align 4\l  %16 = mul nsw i32 %14, %15\l  store i32 %16, i32* %9, align 4\l  %17 = load i32, i32* %4, align 4\l  %18 = icmp sgt i32 %17, 2\l  br i1 %18, label %19, label %23\l|{<s0>T|<s1>F}}"];
+	Node0x7088320:s0 -> Node0x7088480;
+	Node0x7088320:s1 -> Node0x70890d0;
+	Node0x7088480 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%19:\l19:                                               \l  %20 = load i32*, i32** %6, align 8\l  %21 = load i32, i32* %20, align 4\l  %22 = call i32 @by_value(i32 %21, i32 2)\l  store i32 %22, i32* %9, align 4\l  store i32 1, i32* %10, align 4\l  br label %34\l}"];
+	Node0x7088480 -> Node0x7089520;
+	Node0x70890d0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%23:\l23:                                               \l  %24 = load i32, i32* %4, align 4\l  %25 = icmp sgt i32 %24, 1\l  br i1 %25, label %26, label %31\l|{<s0>T|<s1>F}}"];
+	Node0x70890d0:s0 -> Node0x70896e0;
+	Node0x70890d0:s1 -> Node0x7089730;
+	Node0x70896e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%26:\l26:                                               \l  %27 = load i32*, i32** %6, align 8\l  %28 = load i32*, i32** %7, align 8\l  %29 = load i32*, i32** %8, align 8\l  %30 = call i32* @by_address(i32* %27, i32* %28, i32* %29)\l  store i32* %30, i32** %7, align 8\l  store i32 0, i32* %10, align 4\l  br label %33\l}"];
+	Node0x70896e0 -> Node0x7089b60;
+	Node0x7089730 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f1ccb870",label="{%31:\l31:                                               \l  %32 = load i32, i32* %10, align 4\l  store i32 %32, i32* %9, align 4\l  br label %33\l}"];
+	Node0x7089730 -> Node0x7089b60;
+	Node0x7089b60 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ef886b70",label="{%33:\l33:                                               \l  br label %34\l}"];
+	Node0x7089b60 -> Node0x7089520;
+	Node0x7089520 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%34:\l34:                                               \l  %35 = load i32, i32* %9, align 4\l  %36 = load i32, i32* %10, align 4\l  %37 = call i32 @by_value(i32 %35, i32 %36)\l  ret i32 %37\l}"];
+}
