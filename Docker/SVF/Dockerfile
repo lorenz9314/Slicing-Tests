@@ -1,5 +1,11 @@
 FROM ubuntu:20.04
 
+ARG UNAME=docker
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g $GID -o $UNAME
+RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
+
 # Stop ubuntu-20 interactive options.
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -34,5 +40,12 @@ ENV PATH=${HOME}/SVF/llvm-$llvm_version.obj/bin:$PATH
 ENV SVF_DIR=${HOME}/SVF
 ENV LLVM_DIR=${HOME}/SVF/llvm-$llvm_version.obj
 ENV Z3_DIR=${HOME}/SVF/z3.obj
+
+RUN apt-get -yq update && apt-get install -yq \
+	python3-pip sudo libtinfo5 && \
+	pip3 install psrecord
+
+RUN echo $UNAME:$UNAME | chpasswd chpasswd && adduser docker sudo
+USER $UNAME
 
 WORKDIR /
