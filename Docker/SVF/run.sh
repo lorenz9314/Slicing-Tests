@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-docker build -t svf:latest .
-docker run --rm -ti --name svf \
-	-v "${PWD}/../../examples:/examples" \
-	-v "${PWD}/../../files:/files" \
-	svf:latest
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) \
+  	-f Dockerfile -t svf:latest .
+docker run -ti --name svf \
+	-v "${PWD}/../../examples:/examples:Z" \
+	-v "${PWD}/../../files:/files:Z" \
